@@ -1,0 +1,75 @@
+<table>
+  <div>
+    <h1>Book yout ticket here</h1>
+      <tr>
+        <td><input type="radio"  name="radio" value="oneway">Oneway</td>
+       	<td><input type="radio" name="radio" value="roundtrip">Round trip</td>
+      </tr>
+      <tr>
+		    <td>Passenger Name</td>
+		    <td><input type="text" id="id1"></td>
+	    </tr>
+	    <tr>
+		    <td>From</td>
+		    <td><input type="text" id="fromid"></td>
+        <td>To</td>
+		    <td><input type="text" id="toid"></td>
+	    </tr>
+      <tr>
+        <td>Depart</td>
+      	<td><input type="date" id="deid"></td>
+      	<td>Return</td>
+      	<td><input type="date"></td>
+      </tr>
+      <tr>
+      	<td>cabin class</td>
+      	<td>
+          <select>
+      		  <option value="Economy">Economy</option>
+      		  <option value="Economy">Business</option>
+      		  <option value="Economy">Premium Economy</option>
+      	  </select>
+        </td>
+      </tr>
+  </div>
+</table>
+<br>
+<br>
+<input type="submit" name="submit" value="book now" onclick="ticket()">
+<div id="printdata">
+  <div id="div2"><h1 align="right" style="color: white;">Boarding pass</h1>
+  </div>
+    <table id="table" style="width: 700px;">
+      <tr>
+        <td>Name of the passenger</td>
+  	    <td id="paname"></td>
+      </tr>
+  	  <tr>
+        <td>From</td>
+        <td>Carrier</td>
+      </tr>
+  	  <tr>
+        <td id="pafrom"></td>
+        <td><strong>The best airlines</strong></td>
+      </tr>
+      <tr>
+        <td>To</td>
+        <td></td>
+        <td>Date</td>
+        <td>Time</td>
+      </tr>
+      <tr>
+        <td id="pato"></td>
+        <td></td>
+        <td id="pade"></td>
+        <td><strong>08:40</strong></td>
+      </tr>
+  	  <tr>
+        <td>Flight<br><br><strong>FO57S</strong></td>
+        <td>Seat<br><br><strong>55L</strong></td>
+        <td>Gate<br><br><strong>22</strong></td>
+        <td>Board till<br><br><strong>08:10</strong></td></tr>
+    </table>
+</div>
+<br><br>
+<input type="submit" value="print" onclick="boardingpass('printdata')">
