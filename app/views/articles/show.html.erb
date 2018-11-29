@@ -1,10 +1,19 @@
-<p>
-  <strong>Title:</strong>
-  <%= @article.title %>
-</p>
-<p>
-  <strong>Text:</strong>
-  <%= @article.text %>
-</p>
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
+<div class="row"> 
+	<div class="col-md-3">
+		<div class="panel">
+			<div class="panel-heading">
+				<h1>edit article</h1>
+				<p><strong>name:</strong><%= @article.name %></p>
+				<p><strong>text:</strong><%= @article.description %></p>
+				<p><strong>category:</strong><%= @article.category %></p>
+				<div align="left" class="col-6">
+        <%= link_to 'Edit', edit_article_path(@article),class: "btn btn-warning" %> 
+      </div>
+      <div align="right" class="col-6">
+        <%= link_to 'Back', articles_path,class: "btn btn-default" %>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+

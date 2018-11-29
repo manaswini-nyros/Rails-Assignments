@@ -1,20 +1,28 @@
 <h1>Articles</h1>
-<%= link_to 'post New article', new_article_path %>
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Text</th>
-    <th colspan="2"></th>
-  </tr>
+<div class='container-fluid'>
+<%= link_to 'post New ', new_article_path ,class: "btn btn-info"%>
+<table  class="table table-bordered">
+  <thead  class="thead-light">
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Category</th>
+      <th>Actions</th>
+   </tr>
+  </thead>
+  <tbody>
   <% @articles.each do |article| %>
     <tr>
-      <td><%= article.title %></td>
-      <td><%= article.text %></td>
-      <td><%= link_to 'Show', article_path(article) %></td>
-      <td><%= link_to 'Edit', edit_article_path(article) %></td>
-       <td><%= link_to 'Destroy', article_path(article),
+      <td><%= article.name %></td>
+      <td><%= article.description %></td>
+      <td><%= article.category %></td>
+      <td><%= link_to 'Show', article_path(article),class: "btn btn-success" %>
+     <%= link_to 'Edit', edit_article_path(article),class: "btn btn-warning" %>
+      <%= link_to 'Destroy', article_path(article), 
               method: :delete,
-              data: { confirm: 'are you sure want to delete this article' } %></td>
+              data: { confirm: 'Are you sure want to delete this article'},class: "btn btn-danger" %></td>
     </tr>
   <% end %>
+  </tbody>
 </table>
+</div>

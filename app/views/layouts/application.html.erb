@@ -8,12 +8,25 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 <body>
-  <div class="header">
+  <!-- <div class="header">
     <h1 align="left">Articles</h1>
   </div>
   <ul>
-   <li><a class="active" href="/home">Home</a></li>
-  </ul>
+   <li><a class="active" href="/index">Home</a></li>
+  </ul> -->
+  <nav class = "navbar navbar-default" role = "navigation">
+   
+   <!-- <div class = "navbar-header">
+      <a class = "navbar-brand" href = "#">Articles</a>
+   </div> -->
+   
+   <div>
+      <ul class = "nav navbar-nav">
+         <li class = "active"><a href = "/index">HOME</a></li>
+      </ul>
+   </div>
+   
+</nav>
   <%= yield %>
 </body>
 </html>

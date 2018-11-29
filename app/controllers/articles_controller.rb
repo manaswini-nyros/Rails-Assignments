@@ -1,10 +1,12 @@
+
 class ArticlesController < ApplicationController
-	def index
+  def index
     @articles = Article.all
   end
  
   def show
     @article = Article.find(params[:id])
+    
   end
  
   def new
@@ -19,7 +21,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
  
     if @article.save
-      redirect_to @article
+      redirect_to @article,notice:'article was successfully created.'
     else
       render 'new'
     end
@@ -44,7 +46,6 @@ class ArticlesController < ApplicationController
  
   private
     def article_params
-      params.require(:article).permit(:title, :text)
+      params.require(:article).permit(:name, :description, :category)
     end
 end
-
