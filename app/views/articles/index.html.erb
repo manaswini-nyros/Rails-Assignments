@@ -1,28 +1,28 @@
-<h1>Articles</h1>
-<div class='container-fluid'>
-<%= link_to 'post New ', new_article_path ,class: "btn btn-info"%>
-<table  class="table table-bordered">
-  <thead  class="thead-light">
+<h1>Listing articles</h1>
+<div class="container-fluid">
+  <%= link_to 'New article', new_article_path, class: 'btn btn-info' %>
+  <table class="table table-bordered">
+<thead class="thead-light">
     <tr>
       <th>Name</th>
       <th>Description</th>
-      <th>Category</th>
-      <th>Actions</th>
-   </tr>
+      <th>Categoryid</th>
+      <th>Authorid</th>
+      <th colspan="3"></th>
+    </tr>
   </thead>
   <tbody>
-  <% @articles.each do |article| %>
-    <tr>
-      <td><%= article.name %></td>
-      <td><%= article.description %></td>
-      <td><%= article.category %></td>
-      <td><%= link_to 'Show', article_path(article),class: "btn btn-success" %>
-     <%= link_to 'Edit', edit_article_path(article),class: "btn btn-warning" %>
-      <%= link_to 'Destroy', article_path(article), 
-              method: :delete,
-              data: { confirm: 'Are you sure want to delete this article'},class: "btn btn-danger" %></td>
-    </tr>
-  <% end %>
+    <% @articles.each do |article| %>
+      <tr>
+        <td><%= article.name %></td>
+        <td><%= article.description %></td>
+        <td><%= article.category_id%></td>
+        <td><%= article.author_id %></td>
+        <td><%= link_to 'Show', article_path(article), class: 'btn btn-info' %></td>
+        <td><%= link_to 'Edit', edit_article_path(article), class: 'btn btn-warning' %></td>
+        <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' },  class: 'btn btn-danger'%></td>
+      </tr>
+    <% end %>
   </tbody>
 </table>
-</div>
+

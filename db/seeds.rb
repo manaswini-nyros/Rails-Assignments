@@ -1,4 +1,9 @@
-comedy = Category.create(name: 'comedy')
+chethanbhagat = Author.create(name: 'chethanbhagat')
+georgeOrwell = Author.create(name: 'GeorgeOrwell')
+williamShakespeare = Author.create(name: 'WilliamShakespeare')
+virginiaWoolf = Author.create(name: 'VirginiaWoolf')
+
 horror = Category.create(name: 'horror')
-action = Category.create(name: 'action')
 family = Category.create(name: 'family')
+comedy = Category.create(name: 'comedy')
+love = Author.create(name: 'love')
