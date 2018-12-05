@@ -16,7 +16,7 @@ class ArticlesController < ApplicationController
   end
   def create
   	@article = Article.new(article_params)
-    @article.skip_name_validation = true
+    # @article.skip_name_validation = true
 
     if @article.save
       redirect_to @article,notice:'article was successfully created.'
