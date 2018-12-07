@@ -7,11 +7,15 @@
   <%= @article.description %>
 </p>
 <p>
-  <strong> Author:</strong> <%= @article.author.name %>
+  <strong> Author:</strong> 
+  <%= @article.author.name %>
 </p>
 <p>
-  <strong>Category:</strong><%= @article.category_id%>
+  <strong>Category:</strong>
+  <%= @article.category_id%>
 </p>
-
+<p>
+  In Tag: <%= @article.tags.name %>
+</p>
 <%= link_to 'Edit', edit_article_path(@article) %> |
 <%= link_to 'Back', articles_path %>
