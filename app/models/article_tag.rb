@@ -1,4 +1,4 @@
 class ArticleTag < ApplicationRecord
 	belongs_to :tag
-	belongs_to :article,required: false
+	belongs_to :article
 end
