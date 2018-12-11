@@ -1,7 +1,7 @@
 class Article < ApplicationRecord
-  has_and_belongs_to_many :tags
-  belongs_to :author
-  belongs_to :category
+ has_and_belongs_to_many :tags
+  belongs_to :author, optional: true
+  belongs_to :category, optional: true
   validates :name, presence:true, length: { minimum:3 }
   validates :description, presence: true
   validates :is_published, acceptance: true

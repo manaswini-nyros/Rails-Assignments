@@ -10,17 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_08_072611) do
+ActiveRecord::Schema.define(version: 2018_12_11_040129) do
 
   create_table "accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "username"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "article_tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "article_id"
-    t.integer "tag_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -34,11 +27,16 @@ ActiveRecord::Schema.define(version: 2018_12_08_072611) do
     t.bigint "author_id"
     t.string "status"
     t.bigint "tag_id"
-    t.bigint "article_id"
-    t.index ["article_id"], name: "index_articles_on_article_id"
     t.index ["author_id"], name: "index_articles_on_author_id"
     t.index ["category_id"], name: "index_articles_on_category_id"
     t.index ["tag_id"], name: "index_articles_on_tag_id"
+  end
+
+  create_table "articles_tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "article_id"
+    t.integer "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "authors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -67,16 +65,12 @@ ActiveRecord::Schema.define(version: 2018_12_08_072611) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "article_id"
-    t.bigint "tag_id"
     t.index ["article_id"], name: "index_tags_on_article_id"
-    t.index ["tag_id"], name: "index_tags_on_tag_id"
   end
 
-  add_foreign_key "articles", "articles"
   add_foreign_key "articles", "authors"
   add_foreign_key "articles", "categories"
   add_foreign_key "articles", "tags"
   add_foreign_key "authors", "accounts"
   add_foreign_key "tags", "articles"
-  add_foreign_key "tags", "tags"
 end
