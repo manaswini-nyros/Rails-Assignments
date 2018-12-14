@@ -16,4 +16,7 @@ class Article < ApplicationRecord
     self.status = "success"
     self.save!
   end
+  def self.published
+    scope :created_before, ->(time) { where("created_at < ?", time)}
+   end
 end 

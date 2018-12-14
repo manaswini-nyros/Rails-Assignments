@@ -1,3 +1,26 @@
 .field_with_errors .message{
 	color:red
 }
+body{
+	background-color: #ccc;
+}
+.my_table{
+	padding:20px;
+}
+.my_newtable{
+	background-color: #f8f9f9;
+    margin-top: 5px;
+}
+.my_header{
+	margin:0;
+	padding: 0;
+}
+.my_article{
+	margin: 0;
+	padding: 0;
+}
+.my_newarticle , .my_view{
+	background-color: #1abc9c ;
+	color: white;
+}
+

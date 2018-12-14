@@ -9,7 +9,17 @@ class ArticlesController < ApplicationController
     @articles=Article.where(name:["The crown","The old man and the sea"])
     @articles=Article.where(category_id:36).or(Article.where(tag_id:20))
     @articles=Article.order("name")
-    # @articles=Article.find_by name:"The crown"
+    @articles=Article.find_by name:"The crown"
+    @articles=Article.limit(2).offset(3)
+    @articles = Tag.joins(:articles).includes(:articles) .group('tag_id').having('COUNT(*) >= ?', 4) .order('COUNT(*) desc')
+    @all_articles_count = Article.count :all
+    @articles = Article.order(created_at: :desc)
+    @articles = Article.joins("INNER JOIN tags ON tags.article_id = articles.id AND tags.name = 't'")
+    @articles = Article.joins(:tags) 
+    # @articles=Article.left_outer_joins(:tags).distinct.select('articles.*, COUNT(tags.*) AS tags_count').group('articles.id')
+    @articles=Article.includes(:category, :tags)
+   @articles =Article.includes(:category).limit(5)
+   # @articles=Article.group(:name).count
   end
   def new
   	 @article = Article.new

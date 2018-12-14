@@ -1,13 +1,14 @@
-<div class="container">
+<div class="container my_card">
   <div class="table-bordered">
-    <div class="card">
-      <div class="card-header">
-        <a class="btn btn-primary btn-sm" href="#" role="button"><b>Articles</b></a>
+    <div class="card my_table">
+      <div class="card-header my_header">
+        <a class="btn btn-primary btn-sm my_article" href="#" role="button"><b>Articles</b></a>
       </div>
       <hr>
       <div class="card-body">
-        <%= link_to 'New article', new_article_path, class: 'btn btn-success' %><br>
-        <table class="table table-bordered" class="tablecss">
+        <%= link_to 'New article', new_article_path, class: 'btn  my_newarticle' %><br>
+<!--         <p><%= @all_articles_count %>articles in total</p> -->
+        <table class="table table-bordered my_newtable">
           <thead class="thead-light">
             <tr>
               <th>Name</th>
@@ -20,7 +21,7 @@
             </tr>
           </thead>
           <tbody>
-            <% @articles.find_each do |article| %>
+            <% @articles.each do |article| %>
             <tr>
               <td><%= link_to article.name, article_path(article) %></td>
               <td><%= article.description %></td>
@@ -29,7 +30,7 @@
               <td><%= article.author_id %></td>
               <td><%= article.status%></td>
               <td class="text-left">
-                <%= link_to 'View', article_path(article), class: 'btn btn-success btn-sm' %>
+                <%= link_to 'View', article_path(article), class: 'btn  btn-sm my_view' %>
                 <%= link_to 'Edit', edit_article_path(article), class: 'btn btn-warning btn-sm' %>
                 <%= link_to 'Delete', '#',{:class=>"btn btn-danger btn-sm", "data-toggle"=>"modal", "data-target" => "#delete-#{article.id}"} %>
                 <div class="modal fade" id="delete-<%= article.id %>">
@@ -57,29 +58,3 @@
     </div>
   </div>
 </div>
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-  
- 
