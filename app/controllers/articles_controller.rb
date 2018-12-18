@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-	def index
+  def index
   	@articles=Article.take(3)
     @articles=Article.last(2)
     @articles=Article.first(1)
@@ -20,6 +20,11 @@ class ArticlesController < ApplicationController
     @articles=Article.includes(:category, :tags)
    @articles =Article.includes(:category).limit(5)
    # @articles=Article.group(:name).count
+   @articles=Article.all
+    respond_to do |format| 
+     format.html # index.html.erb 
+     format.xml # index.builder
+    end
   end
   def new
   	 @article = Article.new
