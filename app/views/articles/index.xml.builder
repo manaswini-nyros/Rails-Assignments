@@ -4,8 +4,8 @@ xml.articles do
     xml.article do
       xml.name article.name
       xml.description article.description
-      xml.author article.author_id
-      xml.category article.category_id
+      xml.author article.author.name
+      xml.category article.category.name
       xml.tag article.tag_id
     
     end
