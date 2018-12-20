@@ -1,21 +1,65 @@
-<p>
-  <strong>Name:</strong>
-  <%= @article.name %>
-</p>
-<p>
-  <strong>Description:</strong>
-  <%= @article.description %>
-</p>
-<p>
-  <strong> Author:</strong> 
-  <%= @article.author.name %>
-</p>
-<p>
-  <strong>Category:</strong>
-  <%= @article.category_id%>
-</p>
-<p>
-  In Tag: <%= @article.tag_id %>
-</p>
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
+<div class="container">
+  <div class="card">
+    <div class="col-md-6 my_card">
+      <img class="card-img-top my_image" <%= image_tag @article.image_url%>
+    </div>
+  </div>
+  <div class="card">
+    <div class="col-md-6">
+        <div class="card-body">
+          <h5 class="card-title my_title"> <%= @article.name %></h5>
+          <p class="card-text my_description"><%= @article.description %></p>
+            <p class="card-text my_author"><strong> Author:</strong> <%= @article.author.name %></p>
+            <%= link_to 'Back', articles_path,class: 'btn btn-success btn-sm pull-left' %><%= link_to 'Edit', edit_article_path(@article), class: 'btn btn-warning btn-sm pull-right' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <p class="card-text"><%= @article.content %></p>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- 
+
+  <p>
+    <strong>Name:</strong>
+   
+  </p>
+  <p>
+    <strong>Description:</strong>
+    
+  </p>
+  <p>
+    
+    
+  </p>
+  <p>
+    <strong>Category:</strong>
+    <%= @article.category_id%>
+  </p>
+  <p>
+    In Tag: <%= @article.tag_id %>
+  </p>
+
+
+
+  
+      </div>
+    </div>
+  </div> -->
