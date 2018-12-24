@@ -47,6 +47,11 @@ body{
 .my_card{
 	height: 300px;
 }
+.navbar{
+	position: fixed;
+	margin: 0;
+	padding: 0;
+}
 .my_row {
   display: -ms-flexbox; /* IE10 */
   display: flex;

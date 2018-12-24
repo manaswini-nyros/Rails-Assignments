@@ -24,10 +24,11 @@ class ArticlesController < ApplicationController
     respond_to do |format| 
      format.html # index.html.erb 
      format.xml # index.builder
+     format.json{render json: @articles}
     end
   end
   def new
-  	 @article = Article.new
+  	 @article = Article.new(author: cookies[:article_name])
      @article.image = params[:file]
 
      # File.open('Documents')  do |f|
@@ -45,7 +46,13 @@ class ArticlesController < ApplicationController
   def create
   	@article = Article.new(article_params)
     if @article.save
+      flash[:notice]="Thanks for posting!"
+      if params[:remember_name]
+        cookies[:article_name]=@article.author
+      else
+        cookies.delete(:article_name)
       redirect_to @article,notice:'article was successfully created.'
+      end
     else
       render 'new'
     end

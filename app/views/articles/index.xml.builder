@@ -7,7 +7,6 @@ xml.articles do
       xml.author article.author.name
       xml.category article.category.name
       xml.tag article.tag_id
-    
     end
   end
 end
