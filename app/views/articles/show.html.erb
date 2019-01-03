@@ -10,6 +10,7 @@
           <h5 class="card-title my_title"> <%= @article.name %></h5>
           <p class="card-text my_description"><%= @article.description %></p>
             <p class="card-text my_author"><strong> Author:</strong> <%= @article.author.name %></p>
+            <p> <%= link_to "Printable Receipt (PDF)", articles_path(@articles, format: 'pdf') %></p>  
             <%= link_to 'Back', articles_path,class: 'btn btn-success btn-sm pull-left' %><%= link_to 'Edit', edit_article_path(@article), class: 'btn btn-warning btn-sm pull-right' %>
         </div>
       </div>

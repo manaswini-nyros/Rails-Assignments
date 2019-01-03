@@ -27,6 +27,8 @@ gem 'client_side_validations'
 
 gem 'bcrypt'
 
+gem 'prawn'
+
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 

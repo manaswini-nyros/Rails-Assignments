@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  before_action :check_authorization, :only=>[:show]
   def index
   	@articles=Article.take(3)
     @articles=Article.last(2)
@@ -25,20 +26,29 @@ class ArticlesController < ApplicationController
      format.html # index.html.erb 
      format.xml # index.builder
      format.json{render json: @articles}
+     format.pdf do
+     pdf=ArticlePdf.new(@article)
+      send_data pdf.render, filename:"article_#{@article_name}.pdf",
+                            type: "application/pdf",
+                            disposition: "inline"
     end
   end
   def new
   	 @article = Article.new(author: cookies[:article_name])
      @article.image = params[:file]
 
-     # File.open('Documents')  do |f|
-     #   @article.image = f
-     # end  
+     
   end
   def show
   	@article = Article.find(params[:id])
+      respond_to do |format|
+       format.html
+       format.pdf { render pdf: generate_pdf(@article) }
+
+    end
   end
-  
+ 
+
   
   def edit
   	  @article = Article.find(params[:id])
@@ -57,28 +67,6 @@ class ArticlesController < ApplicationController
       render 'new'
     end
   end
-  # def upload
-  # uploaded_io = params[:article][:picture]
-  #   File.open(Rails.root.join('public', 'uploads',
-  # uploaded_io.original_filename), 'wb') do |file|
-  #   file.write(uploaded_io.read)
-  # end
-  # def download_pdf
-  #   client = Client.find(params[:id])
-  #   send_data generate_pdf(client),
-  #             filename: "#{client.name}.pdf",
-  #             type: "application/pdf"
-  # end
-
-  # private
-
-  # def generate_pdf(image)
-  #   Prawn::Document.new do
-  #     text client.name, align: :center
-  #     text "Address: #{client.address}"
-  #     text "Email: #{client.email}"
-  #   end.render
-  # end
   def update
     @article = Article.find(params[:id])
     if @article.update(article_params)
@@ -92,8 +80,15 @@ class ArticlesController < ApplicationController
     @article.destroy
     redirect_to articles_path
   end
-  private
+
+
+
     def article_params
       params.require(:article).permit(:name, :description,:content , :checkbox, :category_id, :category_name, :tag_id, :tag_name, :image, :author_id, :author_name)
-    end
+   
+  end
+   def check_authorization
+   raise User::NotAuthorized unless current_user
+   end
+end
 end

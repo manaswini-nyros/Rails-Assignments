@@ -17,6 +17,12 @@ def create
     render "new"
   end
 end
+# def show
+#   @user=User.find(params[:id])
+# rescue ActiveRecord::RecordNotFound => e
+#   redirect_to :root,alert:'user not found'
+# end  
+# end
 def user_params
     params.require(:user).permit( :email, :password, :salt, :encrypted_password)
   end
