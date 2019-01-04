@@ -29,6 +29,8 @@ gem 'bcrypt'
 
 gem 'prawn'
 
+gem 'mail'
+
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 

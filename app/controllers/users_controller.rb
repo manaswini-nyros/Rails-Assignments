@@ -1,23 +1,23 @@
 class UsersController < ApplicationController
-def new
-  @user = User.new
-end
-def create
-  @user = User.new(user_params[:article])
-  if @user.save
-    redirect_to root_url, :notice => "Signed up!"
-    flash[:notice]="Thanks"
-    if params[:remember_email]
-    	cookies[:user_email]=@user.article
-    else
-    	cookies.delete(:user_email)
-    end
-     redirect_to @user.article   
-  else
-    render "new"
+  def new
+    @user = User.new
   end
-end
-def user_params
-    params.require(:user).permit( :email, :password, :salt, :encrypted_password)
+  def show
+   @user = User.find(params[:id]) 
+  end
+  def create
+    @user = User.new(user_params)
+
+    if  @user.save
+      UserMailer.signup_confirmation(@user.name).deliver
+      redirect_to log_in_url, notice: 'Successfully created' 
+    else
+      render :new
+    end 
+  end
+  
+  private
+  def user_params
+    params.require(:user).permit(:email,:password_digest, :password, :encrypted_password, :name)
   end
 end
