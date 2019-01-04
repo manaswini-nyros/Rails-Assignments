@@ -36,8 +36,6 @@ class ArticlesController < ApplicationController
   def new
   	 @article = Article.new(author: cookies[:article_name])
      @article.image = params[:file]
-
-     
   end
   def show
   	@article = Article.find(params[:id])
@@ -47,9 +45,6 @@ class ArticlesController < ApplicationController
 
     end
   end
- 
-
-  
   def edit
   	  @article = Article.find(params[:id])
   end
@@ -80,10 +75,7 @@ class ArticlesController < ApplicationController
     @article.destroy
     redirect_to articles_path
   end
-
-
-
-    def article_params
+  def article_params
       params.require(:article).permit(:name, :description,:content , :checkbox, :category_id, :category_name, :tag_id, :tag_name, :image, :author_id, :author_name)
    
   end
