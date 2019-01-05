@@ -1,4 +1,9 @@
 class UsersController < ApplicationController
+  def deliver
+     @user = User.find(params[:id]) 
+     UserMailer.delay(run_at: 1.minute.from_now).signup_confirmation(@user).deliver(params[:id])
+     redirect_to log_in_url, notice: 'Successfully delivered' 
+  end
   def new
     @user = User.new
   end

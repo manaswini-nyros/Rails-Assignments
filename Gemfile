@@ -31,6 +31,10 @@ gem 'prawn'
 
 gem 'mail'
 
+gem 'delayed_job_active_record'
+
+gem 'daemons'
+
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 
